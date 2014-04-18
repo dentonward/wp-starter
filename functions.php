@@ -38,12 +38,17 @@ require_once( 'library/custom-post-type.php' ); // you can disable this if you l
 	- adding custom login css
 	- changing text in footer of admin
 */
-// require_once( 'library/admin.php' ); // this comes turned off by default
+//require_once( 'library/admin.php' ); // this comes turned off by default
 /*
 4. library/translation/translation.php
 	- adding support for other languages
 */
 // require_once( 'library/translation/translation.php' ); // this comes turned off by default
+
+require_once ('library/lessphp/lessc.inc.php');
+require_once ('library/lessphp/wp-less.php');
+
+// see bones.php for stylesheet enqueue
 
 /************* THUMBNAIL SIZE OPTIONS *************/
 
@@ -75,9 +80,9 @@ you like. Enjoy!
 // Sidebars & Widgetizes Areas
 function bones_register_sidebars() {
 	register_sidebar(array(
-		'id' => 'sidebar1',
-		'name' => __( 'Sidebar 1', 'bonestheme' ),
-		'description' => __( 'The first (primary) sidebar.', 'bonestheme' ),
+		'id' => 'sidebar-main',
+		'name' => __( 'Main Sidebar', 'bonestheme' ),
+		'description' => __( 'Main sidebar throughout site', 'bonestheme' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget' => '</div>',
 		'before_title' => '<h4 class="widgettitle">',
@@ -91,18 +96,10 @@ function bones_register_sidebars() {
 
 	Just change the name to whatever your new
 	sidebar's id is, for example:
+  */
 
-	register_sidebar(array(
-		'id' => 'sidebar2',
-		'name' => __( 'Sidebar 2', 'bonestheme' ),
-		'description' => __( 'The second (secondary) sidebar.', 'bonestheme' ),
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget' => '</div>',
-		'before_title' => '<h4 class="widgettitle">',
-		'after_title' => '</h4>',
-	));
-
-	To call the sidebar in your template, you can just copy
+	/*
+  To call the sidebar in your template, you can just copy
 	the sidebar.php file and rename it to your sidebar's name.
 	So using the above example, it would be:
 	sidebar-sidebar2.php
